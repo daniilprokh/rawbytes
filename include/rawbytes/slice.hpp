@@ -412,7 +412,7 @@ public:
 
     template <RawByte U>
     requires traits::NonConst<U>
-    void CopyToAndRemoveLeft(U* dst, Size size) const
+    void CopyToAndRemoveLeft(U* dst, Size size)
     {
         CopyToLeft(dst, size);
         RemoveLeft(size);
@@ -420,7 +420,7 @@ public:
 
     template <RawByte U>
     requires traits::NonConst<U>
-    [[nodiscard]] bool CopyToAndRemoveLeftCheck(U* dst, Size size) const
+    [[nodiscard]] bool CopyToAndRemoveLeftCheck(U* dst, Size size)
     {
         if (!CopyToLeftCheck(dst, size)) {
             return false;
@@ -431,7 +431,7 @@ public:
 
     template <RawByte U>
     requires traits::NonConst<U>
-    void CopyToAndRemoveRight(U* dst, Size size) const
+    void CopyToAndRemoveRight(U* dst, Size size)
     {
         CopyToRight(dst, size);
         RemoveRight(size);
@@ -439,7 +439,7 @@ public:
 
     template <RawByte U>
     requires traits::NonConst<U>
-    [[nodiscard]] bool CopyToAndRemoveRightCheck(U* dst, Size size) const
+    [[nodiscard]] bool CopyToAndRemoveRightCheck(U* dst, Size size)
     {
         if (!CopyToRightCheck(dst, size)) {
             return false;
