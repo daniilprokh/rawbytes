@@ -55,6 +55,18 @@ TEST(Slice, ViewConstruct)
     EXPECT_EQ(byte_slice.ToStringView(), kStr);
 }
 
+TEST(Slice, HasSize)
+{
+    rawbytes::Slice<const rawbytes::Char> empty_slice(std::string_view{});
+    EXPECT_TRUE(empty_slice.HasSize(0));
+    EXPECT_FALSE(empty_slice.HasSize(1));
+    
+    rawbytes::Slice<const rawbytes::Char> char_slice(kStr);
+    EXPECT_TRUE(char_slice.HasSize(0));
+    EXPECT_TRUE(char_slice.HasSize(char_slice.GetSize()));
+    EXPECT_FALSE(char_slice.HasSize(char_slice.GetSize() + 1));
+}
+
 TEST(Slice, Remove)
 {
     rawbytes::Slice<const rawbytes::Char> empty_slice;
