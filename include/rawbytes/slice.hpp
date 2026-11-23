@@ -132,6 +132,9 @@ public:
 
     void RemoveLeft(Size size)
     {
+        if (size == 0) [[unlikely]] {
+            return;
+        }
         RAWBYTES_ASSERT_TRUE(HasSize(size), "SAMPLE TEXT");
         RAWBYTES_ASSERT_NE(ptr_.Get(), nullptr, "SAMPLE TEXT");
         size_ -= size;
@@ -152,6 +155,9 @@ public:
 
     void RemoveRight(Size size)
     {
+        if (size == 0) [[unlikely]] {
+            return;
+        }
         RAWBYTES_ASSERT_TRUE(HasSize(size), "SAMPLE TEXT");
         RAWBYTES_ASSERT_NE(ptr_.Get(), nullptr, "SAMPLE TEXT");
         size_ -= size;
