@@ -64,13 +64,19 @@ public:
     }
 
     Slice(T* begin, T* end)
-        : Slice(begin, end - begin)
+        : Slice(begin, 
+                static_cast<Size>(static_cast<Diff>(end - begin) > 0
+                                  ? end - begin
+                                  : 0))
     {}
 
     template<RawByte U>
     requires traits::ConstImplicationWith<U, T>
     Slice(U* begin, U* end)
-        : Slice(begin, end - begin)
+        : Slice(begin,
+                static_cast<Size>(static_cast<Diff>(end - begin) > 0
+                                  ? end - begin
+                                  : 0))
     {}
 
     template <Raw R>
