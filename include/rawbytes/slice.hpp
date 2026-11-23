@@ -513,7 +513,7 @@ public:
         if (!HasSize(sizeof(R))) {
             return false;
         }
-        return CastMidCheck(ptr);
+        return CastMidCheck(size_ - sizeof(R), ptr);
     }
 
     template <Raw R>
