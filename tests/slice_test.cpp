@@ -55,6 +55,15 @@ TEST(Slice, ViewConstruct)
     EXPECT_EQ(byte_slice.ToStringView(), kStr);
 }
 
+TEST(Slice, Remove)
+{
+    rawbytes::Slice<const rawbytes::Char> empty_slice;
+    EXPECT_TRUE(empty_slice.RemoveLeftCheck(0));
+    EXPECT_TRUE(empty_slice.RemoveRightCheck(0));
+    EXPECT_FALSE(empty_slice.RemoveLeftCheck(1));
+    EXPECT_FALSE(empty_slice.RemoveRightCheck(1));
+}
+
 TEST(Slice, CopyTo)
 {
     rawbytes::Slice<const rawbytes::Char> char_slice(kStr);
